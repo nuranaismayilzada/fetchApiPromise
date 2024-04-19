@@ -59,20 +59,27 @@ fetch('https://northwind.vercel.app/api/products').then(res => res.json())
             price.innerText = elem.unitPrice
             country.innerText = elem.name
 
+            tdWarning.setAttribute("data-bs-toggle","modal")
+            tdWarning.setAttribute("data-bs-target","#exampleModal")
 
             deleteButton.addEventListener("click", (e) => {
                 // fetch('https://northwind.vercel.app/api/products' + '/' + elem.id, {
                 //     method: 'delete'
                 // })
                 //     .then(response => response.json());
+    
                 e.target.parentElement.parentElement.remove();
             })
             
             tdWarning.addEventListener("click",()=>{
-                tdWarning.setAttribute("data-bs-toggle","modal")
-                tdWarning.setAttribute("data-bs-target","#exampleModal")
+               
                 // console.log(modal.innerText);
-                modal.innerText=elem.id
+                // modal.innerText=elem.id
+                let inputOne=document.createElement("input")
+                let inputTwo=document.createElement("input")
+                inputOne.value=elem.id
+                inputTwo.value=elem.name
+                modal.append(inputOne,inputTwo)
             })
 
 
